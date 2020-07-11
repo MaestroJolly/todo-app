@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Todos from './Todos';
+import AddTodo from './AddTodo';
 import './App.css';
 
 class App extends Component {
@@ -9,7 +10,8 @@ class App extends Component {
       {id: 2, content: 'play mario kart'}
     ]
   }
-  deleteTodo = (id) =>{
+
+  deleteTodo = (id) => {
     const todos = this.state.todos.filter(todo =>{
       return todo.id !== id
     });
@@ -18,11 +20,21 @@ class App extends Component {
       todos
     });
   }
+
+  addTodo = (todo) => {
+    todo.id = this.state.todos.length + 1;
+    let todos = [...this.state.todos, todo];
+    this.setState({
+      todos
+    })
+  }
+
   render() {
     return (
       <div className="todo-app container">
         <h1 className="center blue-text">Todos</h1>
         <Todos todos={ this.state.todos } deleteTodo={ this.deleteTodo }/>
+        <AddTodo addTodo={ this.addTodo }/>
       </div>
     );
   }

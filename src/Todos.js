@@ -8,7 +8,7 @@ const Todos = ({ todos, deleteTodo }) => {
                 <span onClick={ () => { deleteTodo(todo.id) }}>{ todo.content }</span>
             </div>)
         })
-    ) : (<p className="center">You have no todos left, yay...</p>);
+    ) : (<p className="center">You have no todos left, yay!...</p>);
     return (
         <div className="todos collection">
             { todoList }
